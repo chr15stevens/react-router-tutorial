@@ -5,9 +5,11 @@
   "keywords": [],
   "main": "index.js",
   "dependencies": {
-    "react-router-dom": "4.1.1",
-    "react-dom": "15.5.3",
-    "react": "15.5.3"
+    "@material-ui/core": "^3.6.2",
+    "@material-ui/icons": "^3.0.1",
+    "react": "16.3.0",
+    "react-dom": "16.3.0",
+    "react-router-dom": "4.1.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"
