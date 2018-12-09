@@ -3,8 +3,7 @@ import Header from './Header'
 import Main from './Main'
 import Board from './Board'
 import Dom from 'react-dom'
-
-
+//import naught from './public/naught.png'
 
 const style = {
   width: "150px",
@@ -15,7 +14,7 @@ const style = {
 
 function change() {
   var a = document.getElementById("a");
-  //a.style.backgroundColor = "red"
+  a.style.backgroundColor = "red"
   a.style.backgroundImage = "%PUBLIC_URL%/naught.png"
   console.log('hell')
 }
