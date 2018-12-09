@@ -9,14 +9,15 @@ import Dom from 'react-dom'
 const style = {
   width: "150px",
   height: "150px",
-  backgroundColor: "red",
+  backgroundColor: "blue",
   float: "left",
 }
 
 function change() {
   var a = document.getElementById("a");
-  a.style.backgroundColor = "green"
-  console.log('hello')
+  //a.style.backgroundColor = "red"
+  a.style.backgroundImage = "%PUBLIC_URL%/naught.png"
+  console.log('hell')
 }
 
 const App = () => (
@@ -26,7 +27,8 @@ const App = () => (
     <Main />
     <div  id="layout" name="andy" style={{maxWidth: "450px", maxHeight: "450px", float: "left", backgroundColor: "Green"}}>LAYOUT
       <div>
-        <button id="a" onClick={() => change()} style={style}>a</button>
+        {/* <button id="a" onClick={() => change()} style={style}>a</button> */}
+        <div id="a" onClick={() => change()} style={style}>a</div>
         <button id="b" style={style}>b</button>
         <button id="c" style={style}>c</button>
         <button id="d" style={style}>d</button>
