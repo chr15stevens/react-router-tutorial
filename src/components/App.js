@@ -10,11 +10,49 @@ const style = {
   backgroundSize: "cover",
 }
 
+
+
 var alternator = true
 var isEmpty = []
+var isNaught = []
+var counter = 0;
 
 for (var i = 0; i < 9; i++) {
   isEmpty[i+1] = true
+  isNaught[i+1] = null
+}
+
+function winCheck(a) {
+  
+  if (isNaught[a.id] != null) {
+    counter+=1
+  }
+  if (counter >= 3) {
+    if (isNaught[1] === isNaught[2] && isNaught[1] === isNaught[3] && isNaught[1] != null) {
+      window.alert('you win')
+    }
+    if (isNaught[1] === isNaught[4] && isNaught[1] === isNaught[7] && isNaught[1] != null) {
+      window.alert('you win')
+    }
+    if (isNaught[1] === isNaught[5] && isNaught[1] === isNaught[9] && isNaught[1] != null) {
+      window.alert('you win')
+    }
+    if (isNaught[2] === isNaught[5] && isNaught[2] === isNaught[8] && isNaught[1] != null) {
+      window.alert('you win')
+    }
+    if (isNaught[3] === isNaught[5] && isNaught[1] === isNaught[7] && isNaught[3] != null) {
+      window.alert('you win')
+    }
+    if (isNaught[3] === isNaught[6] && isNaught[3] === isNaught[9] && isNaught[3] != null) {
+      window.alert('you win')
+    }
+    if (isNaught[4] === isNaught[5] && isNaught[4] === isNaught[6] && isNaught[4] != null) {
+      window.alert('you win')
+    }
+    if (isNaught[7] === isNaught[8] && isNaught[7] === isNaught[9] && isNaught[7] != null) {
+      window.alert('you win')
+    }
+  }  
 }
 
 function change(element) {
@@ -25,14 +63,17 @@ function change(element) {
       a.style.backgroundSize = "cover"
       alternator = false
       isEmpty[a.id] = false
+      isNaught[a.id] = false
     } else {
       a.style.backgroundImage = "url(./naught.svg)"
       a.style.backgroundSize = "cover"
       alternator = true
       isEmpty[a.id] = false
+      isNaught[a.id] = true
     }
   } 
-  console.log(a.style.backgroundImage)
+  winCheck(a);
+  console.log(a.id + ' ' + isNaught[element] + ' ' + counter)
 }
 
 function restart() {
@@ -41,6 +82,8 @@ function restart() {
     elementGrab = document.getElementById(i+1)
     elementGrab.style.backgroundImage = "url(./empty.svg)"
     isEmpty[i+1] = true
+    isNaught[i+1] = null
+    counter = 0
   }
 }
 
