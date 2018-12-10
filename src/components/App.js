@@ -23,34 +23,33 @@ for (var i = 0; i < 9; i++) {
 }
 
 function winCheck(a) {
-  
   if (isNaught[a.id] != null) {
     counter+=1
   }
   if (counter >= 3) {
     if (isNaught[1] === isNaught[2] && isNaught[1] === isNaught[3] && isNaught[1] != null) {
-      window.alert('you win')
+      winEvent(isNaught[1])
     }
     if (isNaught[1] === isNaught[4] && isNaught[1] === isNaught[7] && isNaught[1] != null) {
-      window.alert('you win')
+      winEvent(isNaught[1])
     }
     if (isNaught[1] === isNaught[5] && isNaught[1] === isNaught[9] && isNaught[1] != null) {
-      window.alert('you win')
+      winEvent(isNaught[1])
     }
     if (isNaught[2] === isNaught[5] && isNaught[2] === isNaught[8] && isNaught[1] != null) {
-      window.alert('you win')
+      winEvent(isNaught[2])
     }
     if (isNaught[3] === isNaught[5] && isNaught[1] === isNaught[7] && isNaught[3] != null) {
-      window.alert('you win')
+      winEvent(isNaught[3])
     }
     if (isNaught[3] === isNaught[6] && isNaught[3] === isNaught[9] && isNaught[3] != null) {
-      window.alert('you win')
+      winEvent(isNaught[3])
     }
     if (isNaught[4] === isNaught[5] && isNaught[4] === isNaught[6] && isNaught[4] != null) {
-      window.alert('you win')
+      winEvent(isNaught[4])
     }
     if (isNaught[7] === isNaught[8] && isNaught[7] === isNaught[9] && isNaught[7] != null) {
-      window.alert('you win')
+      winEvent(isNaught[7])
     }
   }  
 }
@@ -87,8 +86,27 @@ function restart() {
   }
 }
 
+function winEvent (winner) { 
+  // create a new div element 
+  var newDiv = document.createElement("div")
+  var newContent
+  // and give it some content
+  if (winner === true) {
+    newContent = document.createTextNode("O has won!")
+  } else {
+    newContent = document.createTextNode("X has won!")
+  }
+  
+  // add the text node to the newly created div
+  newDiv.appendChild(newContent)
+  // add the newly created element and its content into the DOM 
+  var currentDiv = document.getElementById("div1")
+  document.body.insertBefore(newDiv, currentDiv)
+}
+
 const App = () => (
 
+  
   <div>
     <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px", float: "left"}}>
       <div onClick={() => restart()}>RESTART</div>
