@@ -11,18 +11,25 @@ const style = {
 }
 
 var alternator = true
+var isEmpty = []
+
+for (var i = 0; i < 9; i++) {
+  isEmpty[i+1] = true
+}
 
 function change(element) {
   var a = document.getElementById(element)
-  if (a.style.backgroundImage === "url(./empty.svg)") {
+  if (isEmpty[a.id] === true) {
     if (alternator === true) {
       a.style.backgroundImage = "url(./cross.svg)"
       a.style.backgroundSize = "cover"
       alternator = false
+      isEmpty[a.id] = false
     } else {
       a.style.backgroundImage = "url(./naught.svg)"
       a.style.backgroundSize = "cover"
       alternator = true
+      isEmpty[a.id] = false
     }
   } 
   console.log(a.style.backgroundImage)
@@ -33,6 +40,7 @@ function restart() {
   for (var i = 0 ; i < 9 ; i++) {
     elementGrab = document.getElementById(i+1)
     elementGrab.style.backgroundImage = "url(./empty.svg)"
+    isEmpty[i+1] = true
   }
 }
 
