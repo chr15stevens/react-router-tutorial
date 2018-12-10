@@ -1,48 +1,56 @@
 import React from 'react'
-import Board from './Board'
-//import Naught from '../../public/naught.png'
-import Cross from '@material-ui/icons/Clear'
 
 const style = {
   width: "150px",
   height: "150px",
-  backgroundColor: "blue",
+  backgroundColor: "FF0000",
   float: "left",
+  border: "1px solid black",
+  backgroundImage: "url(./empty.svg)",
+  backgroundSize: "cover",
 }
 
 var alternator = true
 
 function change(element) {
-  var a = document.getElementById(element);
-  if (alternator === true) {
-    a.style.backgroundImage = "url(./cross.png)"
-    a.style.backgroundSize = "cover"
-    alternator = false
-  } else {
-    a.style.backgroundImage = "url(./naught.png)"
-    a.style.backgroundSize = "cover"
-    alternator = true
+  var a = document.getElementById(element)
+  if (a.style.backgroundImage === "url(./empty.svg)") {
+    if (alternator === true) {
+      a.style.backgroundImage = "url(./cross.svg)"
+      a.style.backgroundSize = "cover"
+      alternator = false
+    } else {
+      a.style.backgroundImage = "url(./naught.svg)"
+      a.style.backgroundSize = "cover"
+      alternator = true
+    }
+  } 
+  console.log(a.style.backgroundImage)
+}
+
+function restart() {
+  var elementGrab;
+  for (var i = 0 ; i < 9 ; i++) {
+    elementGrab = document.getElementById(i+1)
+    elementGrab.style.backgroundImage = "url(./empty.svg)"
   }
-   
-  
-  console.log('hell')
 }
 
 const App = () => (
 
   <div>
-    <Cross/>
-    <div  id="layout" name="andy" style={{maxWidth: "450px", maxHeight: "450px", float: "left", backgroundColor: "Green"}}>LAYOUT
+    <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px", float: "left"}}>
+      <div onClick={() => restart()}>RESTART</div>
       <div>
-        <div id="a" onClick={() => change("a")} style={style}>a</div>
-        <div id="b" onClick={() => change("b")} style={style}>b</div>
-        <div id="c" onClick={() => change("c")} style={style}>c</div>
-        <div id="d" onClick={() => change("d")} style={style}>d</div>
-        <div id="e" onClick={() => change("e")} style={style}>e</div>
-        <div id="f" onClick={() => change("f")} style={style}>f</div>
-        <div id="g" onClick={() => change("g")} style={style}>g</div>
-        <div id="h" onClick={() => change("h")} style={style}>h</div>
-        <div id="i" onClick={() => change("i")} style={style}>i</div>
+        <div id="1" onClick={() => change("1")}  style={style}>1</div>
+        <div id="2" onClick={() => change("2")}  style={style}>2</div>
+        <div id="3" onClick={() => change("3")}  style={style}>3</div>
+        <div id="4" onClick={() => change("4")}  style={style}>4</div>
+        <div id="5" onClick={() => change("5")}  style={style}>5</div>
+        <div id="6" onClick={() => change("6")}  style={style}>6</div>
+        <div id="7" onClick={() => change("7")}  style={style}>7</div>
+        <div id="8" onClick={() => change("8")}  style={style}>8</div>
+        <div id="9" onClick={() => change("9")}  style={style}>9</div>
       </div>
     </div>
 
