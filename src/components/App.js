@@ -16,6 +16,8 @@ var alternator = true
 var isEmpty = []
 var isNaught = []
 var counter = 0;
+var winO = 0
+var winX = 0
 
 for (var i = 0; i < 9; i++) {
   isEmpty[i+1] = true
@@ -93,20 +95,20 @@ function winEvent (winner) {
   // and give it some content
   if (winner === true) {
     newContent = document.createTextNode("O has won!")
+    winO++
   } else {
     newContent = document.createTextNode("X has won!")
+    winX++
   }
-  
   // add the text node to the newly created div
   newDiv.appendChild(newContent)
   // add the newly created element and its content into the DOM 
   var currentDiv = document.getElementById("div1")
   document.body.insertBefore(newDiv, currentDiv)
+  document.getElementById('display').innerHTML = "O: " + winO + "  X: " + winX
 }
 
 const App = () => (
-
-  
   <div>
     <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px", float: "left"}}>
       <div onClick={() => restart()}>RESTART</div>
@@ -122,7 +124,7 @@ const App = () => (
         <div id="9" onClick={() => change("9")}  style={style}>9</div>
       </div>
     </div>
-
+<div id="display" float="left">Score</div>
   </div>
 )
 

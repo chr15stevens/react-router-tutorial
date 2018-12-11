@@ -1,27 +1,31 @@
 import React from 'react'
 
 const style = {
-    width: "150px",
-    height: "150px",
-    backgroundColor: "blue",
-    float: "left",
+  width: "150px",
+  height: "150px",
+  backgroundColor: "FF0000",
+  float: "left",
+  border: "1px solid black",
   }
-
   
 
-  const Board = () => (
-    <div>
-      {/* <button id="a" style={style}>a</button>
-      <button id="b" style={style}>b</button>
-      <button id="c" style={style}>c</button>
-      <button id="d" style={style}>d</button>
-      <button id="e" style={style}>e</button>
-      <button id="f" style={style}>f</button>
-      <button id="g" style={style}>g</button>
-      <button id="h" style={style}>h</button>
-      <button id="i" style={style}>i</button> */}
-      <button style={style}>!!!</button>
-    </div>
+  // const Board = () => (
+  //   function initialize () {
+  //   var slot = {id, image, isEmpty, isNaught}
+  //   var grid = new slot[8]
+  //   for (var i = 0; i < 9; i++) {
+  //     grid[i].id = (i+1)
+  //     grid[i].isNaught = null
+  //     grid[i].isEmpty = true
+  //     image = "url(./empty.svg)"
+  //   }
+  //   }
+  // )
+
+  
+  const Board = (props) => (
+    <h1>Hello, {this.props.name}</h1>
   )
+
 
   export default Board
