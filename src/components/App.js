@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import Board from './Board';
 
 const style = {
@@ -56,27 +57,31 @@ function winCheck(a) {
     }
   }  
 }
-
-function change(element) {
-  var a = document.getElementById(element)
-  if (isEmpty[a.id] === true) {
-    if (alternator === true) {
-      a.style.backgroundImage = "url(./cross.svg)"
-      a.style.backgroundSize = "cover"
-      alternator = false
-      isEmpty[a.id] = false
-      isNaught[a.id] = false
-    } else {
-      a.style.backgroundImage = "url(./naught.svg)"
-      a.style.backgroundSize = "cover"
-      alternator = true
-      isEmpty[a.id] = false
-      isNaught[a.id] = true
-    }
-  } 
-  winCheck(a);
-  console.log(a.id + ' ' + isNaught[element] + ' ' + counter)
+class Switch extends React.Component{
+  render() {
+    return this.style.backgroundImage="./cross.svg"
+  }
 }
+
+  
+  // var a = document.getElementById(element)
+  // if (isEmpty[a.id] === true) {
+  //   if (alternator === true) {
+  //     a.style.backgroundImage = "url(./cross.svg)"
+  //     a.style.backgroundSize = "cover"
+  //     alternator = false
+  //     isEmpty[a.id] = false
+  //     isNaught[a.id] = false
+  //   } else {
+  //     a.style.backgroundImage = "url(./naught.svg)"
+  //     a.style.backgroundSize = "cover"
+  //     alternator = true
+  //     isEmpty[a.id] = false
+  //     isNaught[a.id] = true
+  //   }
+  // } 
+  // winCheck(a);
+  // console.log(a.id + ' ' + isNaught[element] + ' ' + counter)
 
 function restart() {
   var elementGrab;
@@ -111,16 +116,16 @@ function winEvent (winner) {
 
 const App = (props) => (
   <div>
-    <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px", float: "left"}}>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
-      <Board  src="./cross.svg"/>
+    <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px"}}>
+      <Board id="1" onClick={() => {Switch}}/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
     </div>
     
       {/*<div onClick={() => restart()}>RESTART</div>

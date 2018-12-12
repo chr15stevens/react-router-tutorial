@@ -28,8 +28,8 @@ const style = {
   class Board extends React.Component {
     render() {
       return (
-      <div>
-        <img style={style}></img>
+      <div style={style}>
+        {/* <img style={style}></img> */}
       </div>)
     }
   }
