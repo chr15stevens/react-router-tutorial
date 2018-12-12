@@ -1,4 +1,5 @@
 import React from 'react'
+import Board from './Board';
 
 const style = {
   width: "150px",
@@ -41,7 +42,7 @@ function winCheck(a) {
     if (isNaught[2] === isNaught[5] && isNaught[2] === isNaught[8] && isNaught[1] != null) {
       winEvent(isNaught[2])
     }
-    if (isNaught[3] === isNaught[5] && isNaught[1] === isNaught[7] && isNaught[3] != null) {
+    if (isNaught[3] === isNaught[5] && isNaught[3] === isNaught[7] && isNaught[3] != null) {
       winEvent(isNaught[3])
     }
     if (isNaught[3] === isNaught[6] && isNaught[3] === isNaught[9] && isNaught[3] != null) {
@@ -108,10 +109,21 @@ function winEvent (winner) {
   document.getElementById('display').innerHTML = "O: " + winO + "  X: " + winX
 }
 
-const App = () => (
+const App = (props) => (
   <div>
     <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px", float: "left"}}>
-      <div onClick={() => restart()}>RESTART</div>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+      <Board  src="./cross.svg"/>
+    </div>
+    
+      {/*<div onClick={() => restart()}>RESTART</div>
       <div>
         <div id="1" onClick={() => change("1")}  style={style}>1</div>
         <div id="2" onClick={() => change("2")}  style={style}>2</div>
@@ -124,7 +136,7 @@ const App = () => (
         <div id="9" onClick={() => change("9")}  style={style}>9</div>
       </div>
     </div>
-<div id="display" float="left">Score</div>
+    <div id="display" float="left">Score</div> */}
   </div>
 )
 

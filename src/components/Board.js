@@ -6,6 +6,8 @@ const style = {
   backgroundColor: "FF0000",
   float: "left",
   border: "1px solid black",
+  backgroundImage: "url(./empty.svg)",
+  backgroundSize: "cover",
   }
   
 
@@ -23,9 +25,14 @@ const style = {
   // )
 
   
-  const Board = (props) => (
-    <h1>Hello, {this.props.name}</h1>
-  )
+  class Board extends React.Component {
+    render() {
+      return (
+      <div>
+        <img style={style}></img>
+      </div>)
+    }
+  }
 
 
   export default Board
