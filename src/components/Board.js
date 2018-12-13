@@ -27,7 +27,7 @@ const style = {
 
     grid(id) {
       return (
-          <img style={style} src={this.state.Image} onClick={this.click}></img>
+          <img style={style} src={this.state.Image} alt="sorry" onClick={this.click}></img>
       )
     }
 
@@ -48,7 +48,6 @@ const style = {
       }}
     
     render() {
-        //<img style={style} src={this.state.Image} onClick={this.click}></img>
           return this.grid()        
     }
   }
