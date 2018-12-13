@@ -2,18 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Board from './Board';
 
-const style = {
-  width: "150px",
-  height: "150px",
-  backgroundColor: "FF0000",
-  float: "left",
-  border: "1px solid black",
-  backgroundImage: "url(./empty.svg)",
-  backgroundSize: "cover",
-}
-
-
-
 var alternator = true
 var isEmpty = []
 var isNaught = []
@@ -57,12 +45,6 @@ function winCheck(a) {
     }
   }  
 }
-class Switch extends React.Component{
-  render() {
-    return this.style.backgroundImage="./cross.svg"
-  }
-}
-
   
   // var a = document.getElementById(element)
   // if (isEmpty[a.id] === true) {
@@ -117,14 +99,6 @@ function winEvent (winner) {
 const App = (props) => (
   <div>
     <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px"}}>
-      <Board id="1" onClick={() => {Switch}}/>
-      <Board/>
-      <Board/>
-      <Board/>
-      <Board/>
-      <Board/>
-      <Board/>
-      <Board/>
       <Board/>
     </div>
     
