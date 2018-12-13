@@ -88,7 +88,7 @@ function winEvent (winner) {
     newContent = document.createTextNode("X has won!")
     winX++
   }
-  // add the text node to the newly created div
+  // add the text node to the newly created div 
   newDiv.appendChild(newContent)
   // add the newly created element and its content into the DOM 
   var currentDiv = document.getElementById("div1")
@@ -99,6 +99,14 @@ function winEvent (winner) {
 const App = (props) => (
   <div>
     <div  id="layout" style={{maxWidth: "456px", maxHeight: "456px"}}>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
+      <Board/>
       <Board/>
     </div>
     
