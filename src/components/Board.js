@@ -1,5 +1,5 @@
 import React from 'react'
-//import Slot from './Slot'
+import Slot from './Slot'
 
 const style = {
   width: "150px",
@@ -15,68 +15,88 @@ const imagesPath = {
   naught: "./naught.svg",
 }
 
-var alternator = false
+var alternator = true
 
 class Board extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            Grid: [],
+            Grid: [
+                null,null,null,null,null,null,null,null,null
+                // <Slot/>,
+                // <Slot/>,
+                // <Slot/>,
+                // <Slot/>,
+                // <Slot/>,
+                // <Slot/>,
+                // <Slot/>,
+                // <Slot/>,
+                // <Slot/>
+            ],
             Image: imagesPath.empty,
-            isNaught: null
+            isNaught: null,
         }
 
-        this.click = this.click.bind(this)
-        this.track = []
-        this.listSlots = this.listSlots.bind(this)
-        this.Slot = this.Slot.bind(this)
+    this.click = this.click.bind(this)
+    this.track = []
+    this.slots = this.slots.bind(this)
     }
 
-    click(props) {
-          if (this.state.Image === imagesPath.empty) {
-          if (alternator === true) {
-            this.setState({
-              Image: imagesPath.naught,
-              isNaught: true
-            })
-            alternator = false
-          } else {
-            this.setState({
-              Image: imagesPath.cross,
-              isNaught: false
-            })
-            alternator = true
-            }
-            console.log(this.state.Image)
-          }
+    click(index) {
+        let a = this.state.Grid.slice()
+        if (this.state.Image === imagesPath.empty) {
+         if (alternator === true) {
+             a[index] = <Slot key={index} style={style} src={imagesPath.naught} isNaught={true} />
+             this.setState({
+                  Grid: a},
+                  function() {console.log(a)}
+             )
+        //   this.setState({
+        //    Grid: a,
+        //    Image: imagesPath.naught,
+        //    isNaught: true},
+        //    function() {console.log(this.state)}
+        //   )
+          alternator = false
+         } else {
+            // a[index] = <Slot key={index} style={style} src={imagesPath.cross} isNaught={true} />
+            // this.setState({
+            //      Grid: a},
+            //      function() {console.log(a)}
+            // )
+          this.setState({
+           Image: imagesPath.cross,
+           isNaught: false,
+           function() {console.log(this.state)}
+          })
+          alternator = true
+         }
+         //console.log(this.state)
         }
-    
-
-    Slot(props) {
-        return <img style={props.style} src={props.src} alt="sorry" onClick={this.click}></img>
     }
 
-    listSlots() {
-        const lol = [
-            <this.Slot key={1} style={style} src={this.state.Grid[1].Image}/>,
-            <this.Slot key={2} style={style} src={this.state.Grid[2].Image}/>,
-            <this.Slot key={3} style={style} src={this.state.Grid[3].Image}/>,
-            <this.Slot key={4} style={style} src={this.state.Grid[4].Image}/>,
-            <this.Slot key={5} style={style} src={this.state.Grid[5].Image}/>,
-            <this.Slot key={6} style={style} src={this.state.Grid[6].Image}/>,
-            <this.Slot key={7} style={style} src={this.state.Grid[7].Image}/>,
-            <this.Slot key={8} style={style} src={this.state.Grid[8].Image}/>,
-            <this.Slot key={9} style={style} src={this.state.Grid[9].Image}/>
-        ]
-        return lol
+    slots() {
+        const back = imagesPath.cross
+        return this.state.Grid.map((grid, index) => {
+            return <Slot key={index} style={style} src={this.state.Image} isNaught={this.state.isNaught} onClick={this.click(index)}/>
+        })
+        // this.state.Grid.map((grid, index) => {
+        //     return <Slot key={index} style={style} src={imagesPath.cross}></Slot>
+        // })
+        // const numbers = [1, 2, 3, 4, 5]
+        // const lol = numbers.map((number) => 
+        //     <li>{number}</li>
+        // )
+        // return <ul>{lol}</ul>
+        //return this.state.Grid
     }
-    
-    render() {
 
+    render(props) {
        return( 
         <div>
-            {this.listSlots()}
+            {this.slots(props)}
+            {/* {this.listSlots()} */}
         </div>
         )
     }
